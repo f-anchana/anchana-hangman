@@ -1,40 +1,36 @@
 "use client";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
 // import "./mot.css";
 import Link from "next/link";
-import Locale from "../../types.ts";
 
 const API = "https://node-hangman-api-production.up.railway.app/";
 
-export const Mot = () => {
+export const Mot = ({ locale }) => {
     const [word, setWord] = useState(null);
 
-    const Envoiedemande = async () => {
+    const fetchWord = async () => {
         try {
-            const requestBody = {
-                // Ajoute les paramètres de la requête POST ici
-                locale: "fr-FR",
-                // Locale : "en-GB",
-            };
+            const requestBody = new URLSearchParams();
+            requestBody.append("locale", locale);
 
             const requestOptions = {
                 method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(requestBody)
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: requestBody.toString()
             };
 
             const res = await fetch(API, requestOptions);
             const data = await res.json();
-            setWord(data.word); // Accéder directement à la propriété 'word'
+            setWord(data.word);
+            console.log("Mot renvoyé par l'API :", data.word);
         } catch (error) {
-            console.error('Erreur lors de la requête :', error);
+            console.error('Erreur lors de la requête API :', error);
         }
     };
 
-    // Appelle la fonction sendRequest lorsque le composant est monté
     useEffect(() => {
-        Envoiedemande();
-    }, []);
+        fetchWord(); // Appeler fetchWord lorsque la locale change
+    }, [locale]);
 
     return (
         <div className="container">
@@ -46,3 +42,5 @@ export const Mot = () => {
         </div>
     );
 };
+
+export default Mot;

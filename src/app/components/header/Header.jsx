@@ -1,26 +1,35 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import "./header.css";
 
-export default function Header() {
+// Header.jsx
 
+export const Header = ({ locale, setLocale }) => {
     return (
         <header>
-        <nav>
-            <h1>Hangman</h1>
-            <ul>
-                <li>
-                    <button>Fr</button>
-                </li>
-                <li>
-                    <button>Eng</button>
-                </li>
+            <nav>
+                <h1>Hangman</h1>
+                <ul>
+                    <li>
+                        <button
+                            onClick={() => setLocale('fr-FR')}
+                            className={locale === 'fr-FR' ? 'active' : ''}
+                        >
+                            Fr
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            onClick={() => setLocale('en-GB')}
+                            className={locale === 'en-GB' ? 'active' : ''}
+                        >
+                            Eng
+                        </button>
+                    </li>
                 </ul>
-        </nav>
-    </header>
-    
+            </nav>
+        </header>
     );
+};
 
-}
-
-export { Header };
+export default Header;

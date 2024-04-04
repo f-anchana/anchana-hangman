@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 // import "./mot.css";
 import Link from "next/link";
+import Locale from "../../types.ts";
 
 const API = "https://node-hangman-api-production.up.railway.app/";
 
@@ -12,6 +13,8 @@ export const Mot = () => {
         try {
             const requestBody = {
                 // Ajoute les paramètres de la requête POST ici
+                locale: "fr-FR",
+                // Locale : "en-GB",
             };
 
             const requestOptions = {
@@ -43,4 +46,3 @@ export const Mot = () => {
         </div>
     );
 };
-

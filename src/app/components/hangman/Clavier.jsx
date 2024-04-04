@@ -1,13 +1,11 @@
 import React from "react";
 
-export default function Footer() {
+export default function Clavier() {
     
         return (
             <footer>
-            <h1>By anchanaaa</h1>
+            <h1>By anhanaaaaaa</h1>
             </footer>
         );
     
     }
-
-export { Footer };

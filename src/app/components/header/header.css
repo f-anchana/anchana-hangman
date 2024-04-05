@@ -28,9 +28,7 @@ ul {
     margin-left: auto;
 }
 
-/* Header.css */
 button.active {
-    background-color: blue; /* Changez la couleur de fond pour indiquer le bouton actif */
-    color: white; /* Changez la couleur du texte pour une meilleure lisibilité */
-    /* Ajoutez d'autres styles selon vos préférences */
+    background-color: rgb(178, 0, 86);
+    color: white; 
 }

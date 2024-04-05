@@ -5,19 +5,21 @@ import { Header } from "./components/header/Header";
 import { Mot } from "./components/mot/Mot";
 import { Footer } from "./components/footer/Footer";
 import { DessinHangman } from "./components/hangman/DessinHangman";
+import { Clavier } from "./components/hangman/Clavier";
 
 export default function Home() {
 
   const [locale, setLocale] = useState('fr-FR');
   return (
     <main className={styles.main}>
-      {/* <Header /> */}
-
-      {/* <Mot /> */}
 
       <Header locale={locale} setLocale={setLocale} />
-            <Mot locale={locale} />
+            
       <DessinHangman />
+            <Mot locale={locale} />
+      <div style={{alignSelf: "stretch"}}>
+      <Clavier />
+      </div>
       <Footer />
     </main>
   );

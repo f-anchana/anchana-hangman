@@ -1,7 +1,5 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-// import "./mot.css";
-import Link from "next/link";
 
 const API = "https://node-hangman-api-production.up.railway.app/";
 
@@ -29,18 +27,38 @@ export const Mot = ({ locale }) => {
     };
 
     useEffect(() => {
-        fetchWord(); // Appeler fetchWord lorsque la locale change
+        fetchWord();
     }, [locale]);
 
+    // Split le mot en lettres et les affiche avec un trait en dessous et faire en sorte que les lettres soient cachées youpi
+    const renderLetters = () => {
+        if (!word) return null;
+        return word.split('').map((letter, index) => {
+            let visibleLetter = letter;
+            if (/[a-zA-Z]/.test(letter)) {
+                // Si la lettre est alphabétique, la cacher
+                visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem" }}>{letter}</span>;
+            }
+            return (
+                <span key={index} style={{ borderBottom: "2px solid black", marginRight: "10px", paddingBottom: "10px" }}>
+                    {visibleLetter}
+                </span>
+            );
+        });
+    };
+    
+    
     return (
         <div className="container">
+                            <p>Mot renvoyé par l'API : {word}</p>
+
             {word ? (
-                <p>Mot renvoyé par l'API : {word}</p>
+                <div>
+                    {renderLetters()}
+                </div>
             ) : (
                 <p>Chargement...</p>
             )}
         </div>
     );
 };
-
-export default Mot;

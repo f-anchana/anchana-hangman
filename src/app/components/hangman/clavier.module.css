@@ -1,0 +1,27 @@
+.touche{
+    margin-top: 1.5rem;
+    width: 100%;
+    background-color: rgb(255, 212, 103);
+    border: none;
+    aspect-ratio: 1 / 1;
+    font-size: 2rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.touche:active{
+    background-color: rgba(255, 103, 149, 0.575);
+    color: white;
+}
+
+.touche.inactive{
+    background-color: rgb(199, 103, 255);
+    color: black;
+    opacity: 0.3;
+}
+
+.touche:hover:not(:disabled), .touche:focus:not(:disabled){
+    background-color: rgb(255, 103, 149);
+    color: white;
+}

@@ -10,6 +10,7 @@ import { Clavier } from "./components/hangman/Clavier";
 export default function Home() {
 
   const [locale, setLocale] = useState('fr-FR');
+
   return (
     <main className={styles.main}>
 

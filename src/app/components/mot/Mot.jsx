@@ -30,27 +30,31 @@ export const Mot = ({ locale }) => {
         fetchWord();
     }, [locale]);
 
-    // Split le mot en lettres et les affiche avec un trait en dessous et faire en sorte que les lettres soient cachées youpi
-    const renderLetters = () => {
-        if (!word) return null;
-        return word.split('').map((letter, index) => {
-            let visibleLetter = letter;
-            if (/[a-zA-Z]/.test(letter)) {
-                // Si la lettre est alphabétique, la cacher
-                visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem" }}>{letter}</span>;
-            }
-            return (
-                <span key={index} style={{ borderBottom: "2px solid black", marginRight: "10px", paddingBottom: "10px" }}>
-                    {visibleLetter}
-                </span>
-            );
-        });
-    };
+   // Split le mot en lettres et les affiche avec un trait en dessous et faire en sorte que les lettres soient cachées youpi
+const renderLetters = () => {
+    if (!word) return null;
+    return word.split('').map((letter, index) => {
+        let visibleLetter = letter;
+        if (/[a-zA-Z]/.test(letter)) {
+            // Si la lettre est alphabétique, la cacher
+            visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem" }}>{letter}</span>;
+        } else if (/[àâäéèêëîïôöûüç]/i.test(letter)) {
+            // Si la lettre est une variante avec accents, la cacher également
+            visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem" }}>{letter}</span>;
+        }
+        return (
+            <span key={index} style={{ borderBottom: "2px solid black", marginRight: "10px", paddingBottom: "10px" }}>
+                {visibleLetter}
+            </span>
+        );
+    });
+};
+
     
     
     return (
         <div className="container">
-                            <p>Mot renvoyé par l'API : {word}</p>
+            <p>Mot renvoyé par l'API : {word}</p>
 
             {word ? (
                 <div>

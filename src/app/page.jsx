@@ -8,18 +8,20 @@ import { DessinHangman } from "./components/hangman/DessinHangman";
 import { Clavier } from "./components/hangman/Clavier";
 
 export default function Home() {
-
   const [locale, setLocale] = useState('fr-FR');
+  const [incorrectGuessCount, setIncorrectGuessCount] = useState(0);
+    const [bonneLettre, setbonneLettre] = useState();
+    console.log(incorrectGuessCount);
+    console.log('lettre passé:' + bonneLettre)
+
 
   return (
     <main className={styles.main}>
-
       <Header locale={locale} setLocale={setLocale} />
-            
-      <DessinHangman />
-            <Mot locale={locale} />
+      <DessinHangman incorrectGuessCount={incorrectGuessCount}/>
+      <Mot locale={locale}  bonneLettre={bonneLettre}/>
       <div style={{alignSelf: "stretch"}}>
-      <Clavier />
+      <Clavier setIncorrectGuessCount={setIncorrectGuessCount} setbonneLettre={setbonneLettre}/>
       </div>
       <Footer />
     </main>

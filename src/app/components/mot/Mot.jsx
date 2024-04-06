@@ -61,7 +61,7 @@ export const Mot = ({ locale, bonneLettre }) => {
 
     return (
         <div className="container">
-            <p>Mot renvoyé par l'API : {word}</p>
+            {/* <p>Mot renvoyé par l'API : {word}</p> */}
 
             {word ? (
                 <div>

@@ -1,7 +1,5 @@
 "use client";
 
-// clavier.jsx
-
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./clavier.module.css";
@@ -41,7 +39,7 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
 
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(75px, 1fr))", gap: ".5rem" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: ".5rem", paddingTop: "40px" }}>
         {touches.map((lettre) => (
           <button
             className={`${styles.touche}`}
@@ -56,10 +54,10 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
       <Modal
         isOpen={successModalIsOpen}
         onRequestClose={() => setSuccessModalIsOpen(false)}
-        contentLabel="Success Modal" ariaHideApp={false}      >
+        contentLabel="Success Modal" ariaHideApp={false} >
         <h2>Félicitations ! Vous avez trouvé le mot !</h2>
         <p>Le mot était : {localStorage.getItem("word")}</p>
-        <img src="/henry_gagnant.gif" alt="Henry perdant" />
+        <img src="/henry_gagnant.gif" alt="Henry gagnant" />
         <button onClick={() => {setSuccessModalIsOpen(false); window.location.reload();}}>Fermer</button>
       </Modal>
       <Modal
@@ -70,10 +68,7 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
 
         <h2>Vous avez perdu, veuillez retenter votre chance !</h2>
         <img src="/henry-crying.gif" alt="Henry perdant" />
-        <button onClick={() => {
-          setFailureModalIsOpen(false);
-          window.location.reload();
-        }}>Fermer</button>
+        <button onClick={() => { setFailureModalIsOpen(false); window.location.reload(); }}>Fermer</button>
       </Modal>
     </div>
   );

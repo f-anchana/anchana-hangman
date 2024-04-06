@@ -5,7 +5,17 @@ import "./header.css";
 // Header.jsx
 
 export const Header = ({ locale, setLocale }) => {
+    
+  const TitreBilingue = () => {
+    if (locale === 'fr-FR') {
+      return "Bienvenue sur le jeu du Pendu";
+    } else {
+      return "Welcome to the Hangman Game";
+    }
+  };
+
     return (
+
         <header>
             <nav>
                 <h1>Hangman</h1>
@@ -28,6 +38,8 @@ export const Header = ({ locale, setLocale }) => {
                     </li>
                 </ul>
             </nav>
+            <h1 style={{textAlign: "center"}} >{TitreBilingue()}</h1>
+
         </header>
     );
 };

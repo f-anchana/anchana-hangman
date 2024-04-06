@@ -5,7 +5,7 @@ export default function Footer() {
     
         return (
             <footer>
-            <h1>By anchanaaa</h1>
+            <h1>By Anchana👑✨🪐</h1>
             </footer>
         );
     

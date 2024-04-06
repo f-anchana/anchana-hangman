@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const Corde = <img src="/etape2.png" alt="" />;

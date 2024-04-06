@@ -3,18 +3,18 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import styles from "./clavier.module.css";
-import "../../font.css"; //j'ai pas réussi à exploiter la font téléchargé...
+import "../../font.css";
 
-const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
+const Clavier = ({ setMauvaisChoix, setbonneLettre }) => {
   const touches = "abcdefghijklmnopqrstuvwxyz".split("");
   const [disabledButtons, setDisabledButtons] = useState([]);
   const [errorCount, setErrorCount] = useState(0);
   const [successModalIsOpen, setSuccessModalIsOpen] = useState(false);
   const [failureModalIsOpen, setFailureModalIsOpen] = useState(false);
 
-  const handleLetterClick = (lettre) => {
+  const QuandOnClique = (lettre) => {
     console.log(`Lettre ${lettre} cliquée.`);
-    const word = localStorage.getItem("word").toLowerCase(); // Convertir le mot en minuscules
+    const word = localStorage.getItem("word")
     const variantes = {
       a: ["à", "â", "ä"],
       e: ["é", "è", "ê", "ë"],
@@ -25,7 +25,7 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
     };
     let estDansLeMot = false;
   
-    // Vérifier si la lettre ou une de ses variantes est dans le mot
+    // On vérifie si la lettre ou une de ses variantes est dans le mot - ça ne marche pas pour les lettres accentuées, je saurais jamais pourquoi
     if (word.includes(lettre)) {
       estDansLeMot = true;
     } else {
@@ -42,7 +42,7 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
       setbonneLettre(lettre);
     } else {
       console.log(`La lettre ${lettre} n'est pas dans le mot.`);
-      setIncorrectGuessCount((prevCount) => prevCount + 1);
+      setMauvaisChoix((prevCount) => prevCount + 1);
       setErrorCount((prevCount) => prevCount + 1);
       if (errorCount === 6) {
         setTimeout(() => {
@@ -54,7 +54,7 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
   };
   
 
-
+// Petit délai avant d'afficher le modal de victoire (si on fait des erreurs et qu'on réussit, la modale ne s'affiche pas)
   useEffect(() => {
     if (localStorage.getItem("word").split('').every((char) => disabledButtons.includes(char))) {
       setTimeout(() => {
@@ -64,14 +64,15 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
   }, [disabledButtons]);
 
 
+  // Affichage des touches + modals de victoire et défaite
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: ".5rem", paddingTop: "40px", fontFamily: "FinkHeavy" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: ".5rem", paddingTop: "40px" }}>
         {touches.map((lettre) => (
-          <button
+          <button style={{fontFamily: "FinkHeavy"}}
             className={`${styles.touche}`}
             key={lettre}
-            onClick={() => handleLetterClick(lettre)}
+            onClick={() => QuandOnClique(lettre)}
             disabled={disabledButtons.includes(lettre)}
           >
             {lettre}
@@ -84,9 +85,9 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
         onRequestClose={() => setSuccessModalIsOpen(false)}
         contentLabel="Success Modal" ariaHideApp={false} className={"fenetre"} >
         <h2 style={{fontFamily: "FinkHeavy"}} >Félicitations ! Vous avez trouvé le mot !</h2>
-        <p>Le mot était : {localStorage.getItem("word")}</p>
-        <img src="/henry_gagnant.gif" alt="Henry gagnant" />
-        <button onClick={() => {setSuccessModalIsOpen(false); window.location.reload();}}>Fermer</button>
+        <p style={{fontFamily: "FinkHeavy"}}>Le mot était : {localStorage.getItem("word")}</p><br></br>
+        <img src="/henry_gagnant.gif" alt="" />
+        <button style={{fontFamily: "FinkHeavy", fontSize: "1.3rem"}} onClick={() => {setSuccessModalIsOpen(false); window.location.reload();}}>Fermer</button>
       </Modal>
 
       <Modal
@@ -96,7 +97,7 @@ const Clavier = ({ setIncorrectGuessCount, setbonneLettre }) => {
         <p>Le mot était : {localStorage.getItem("word")}</p>
 
         <h2>Vous avez perdu, veuillez retenter votre chance !</h2>
-        <img src="/henry-crying.gif" alt="Henry perdant" />
+        <img src="/henry-crying.gif" alt="" />
         <button onClick={() => { setFailureModalIsOpen(false); window.location.reload(); }}>Fermer</button>
       </Modal>
     </div>

@@ -2,8 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import "./header.css";
 
-// Header.jsx
-
 export const Header = ({ locale, setLocale }) => {
     
   const TitreBilingue = () => {
@@ -14,11 +12,12 @@ export const Header = ({ locale, setLocale }) => {
     }
   };
 
+// On affiche le titre du jeu en fonction de la langue choisie + les boutons pour changer de langue
     return (
 
         <header>
             <nav>
-                <h1>Hangman</h1>
+                <h1 style={{fontFamily: "FinkHeavy", fontSize: "2rem"}} >Hangman</h1>
                 <ul>
                     <li>
                         <button
@@ -38,7 +37,7 @@ export const Header = ({ locale, setLocale }) => {
                     </li>
                 </ul>
             </nav>
-            <h1 style={{textAlign: "center"}} >{TitreBilingue()}</h1>
+            <h1 style={{textAlign: "center", fontFamily: "FinkHeavy"}} >{TitreBilingue()}</h1>
 
         </header>
     );

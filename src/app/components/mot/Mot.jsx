@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 
 const API = "https://node-hangman-api-production.up.railway.app/";
 
-export const Mot = ({ locale, bonneLettre }) => {
+
+// ça c'est le composant Mot qui affiche les lettres du mot à deviner, on fait une requête à l'API pour récupérer un mot aléatoire en fonction de la langue choisie
+export const Mot = ({ locale, LabonneLettre }) => {
     const [word, setWord] = useState(null);
     const [correctLetters, setCorrectLetters] = useState([]);
 
@@ -33,11 +35,13 @@ export const Mot = ({ locale, bonneLettre }) => {
     }, [locale]);
 
     useEffect(() => {
-        if (bonneLettre) {
-            setCorrectLetters((prevCorrectLetters) => [...prevCorrectLetters, bonneLettre]);
+        if (LabonneLettre) {
+            setCorrectLetters((prevCorrectLetters) => [...prevCorrectLetters, LabonneLettre]);
         }
-    }, [bonneLettre]);
+    }, [LabonneLettre]);
 
+
+    // On affiche les lettres du mot à deviner, en cachant celles qui n'ont pas encore été trouvées, on essaie de gérer les lettres accentuées mais ça ne marche pas
     const renderLetters = () => {
         if (!word) return null;
         return word.split('').map((letter, index) => {

@@ -5,7 +5,7 @@ export default function Footer() {
     
         return (
             <footer>
-            <h1>By Anchana👑✨🪐🍓</h1>
+            <h1 style={{fontFamily: "FinkHeavy"}} >By Anchana👑✨🪐🍓</h1>
             </footer>
         );
     

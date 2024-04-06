@@ -26,9 +26,7 @@
 }
 
 .fenetre{
-    /* display: flex !important;
-    margin: auto; */
-    width: 50vw;
+    width: 60vw;
     gap: 1rem;
     margin-top: 1.5rem;
 }

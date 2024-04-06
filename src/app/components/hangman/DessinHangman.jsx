@@ -1,48 +1,26 @@
 import React from "react";
 
-const Corde = (
-        <div style={{ height: "50px", width: "10px", background: "pink", position: "absolute", top: 0, right: 0 }} ></div>
-)
+const Corde = <img src="/etape2.png" alt="" />;
+const Tete = <img src="/etape3.png" alt="" />;
+const Corps = <img src="/etape4.png" alt="" />;
+const BrasDroit = <img src="/etape5.png" alt="" />;
+const BrasGauche = <img src="/etape6.png" alt="" />;
+const JambeGauche = <img src="/etape7.png" alt="" />;
+const JambeDroite = <img src="/final.png" alt="" />;
 
-const Tete = (
-        <div style={{ height: "50px", width: "50px", borderRadius: "100%", border: "5px solid blue", position: "absolute", top: "50px", right: "-20px" }} ></div>
-)
+export function DessinHangman({ incorrectGuessCount }) {
+  const partsToShow = Math.min(incorrectGuessCount, 7); // Limit to 6 parts
 
-const Corps = (
-        <div style={{ height: "100px", width: "10px", background: "pink", position: "absolute", top: "100px", right: 0 }} ></div>
-)
-
-const BrasDroit = (
-        <div style={{ height: "10px", width: "100px", background: "pink", position: "absolute", top: "120px", right: "-100px", rotate: "-30deg", transformOrigin: "left bottom" }} ></div>
-)
-
-const BrasGauche = (
-        <div style={{ height: "10px", width: "100px", background: "pink", position: "absolute", top: "120px", right: "10px", rotate: "30deg", transformOrigin: "right bottom" }} ></div>
-)
-
-const JambeGauche = (
-        <div style={{ height: "10px", width: "100px", background: "pink", position: "absolute", top: "190px", right: "-90px", rotate: "60deg", transformOrigin: "left bottom" }} ></div>
-)
-const JambeDroite = (
-        <div style={{ height: "10px", width: "100px", background: "pink", position: "absolute", top: "190px", right: 0, rotate: "-60deg", transformOrigin: "right bottom" }} ></div>
-)
-
-export function DessinHangman() {
-
-        return (
-                <div style={{ position: "relative" }} >
-                        {Corde}
-                        {Tete}
-                        {Corps}
-                        {BrasDroit}
-                        {BrasGauche}
-                        {JambeGauche}
-                        {JambeDroite}
-                        <div style={{ height: "10px", width: "200px", background: "purple", marginLeft: "120px" }} ></div>
-                        <div style={{ height: "400px", width: "10px", background: "purple", marginLeft: "120px" }} ></div>
-                        <div style={{ height: "10px", width: "250px", background: "pink" }} >            </div>
-                </div>
-        )
-
-
+  return (
+    <div style={{ position: "relative" }}>
+      <img src="/base.png" alt="" />
+      {partsToShow >= 1 && <div style={{ position: "absolute", top: 0, left: 0 }}>{Corde}</div>}
+      {partsToShow >= 2 && <div style={{ position: "absolute", top: 0, left: 0 }}>{Tete}</div>}
+      {partsToShow >= 3 && <div style={{ position: "absolute", top: 0, left: 0 }}>{Corps}</div>}
+      {partsToShow >= 4 && <div style={{ position: "absolute", top: 0, left: 0 }}>{BrasDroit}</div>}
+      {partsToShow >= 5 && <div style={{ position: "absolute", top: 0, left: 0 }}>{BrasGauche}</div>}
+      {partsToShow >= 6 && <div style={{ position: "absolute", top: 0, left: 0 }}>{JambeGauche}</div>}
+      {partsToShow >= 7 && <div style={{ position: "absolute", top: 0, left: 0 }}>{JambeDroite}</div>}
+    </div>
+  );
 }

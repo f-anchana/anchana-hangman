@@ -42,26 +42,28 @@ export const Mot = ({ locale, bonneLettre }) => {
         if (!word) return null;
         return word.split('').map((letter, index) => {
             let visibleLetter = letter;
-            if (/[a-zA-Z]/.test(letter)) {
+            if (/[a-zA-Zàâäéèêëîïôöûüç]/i.test(letter)) {
                 if (correctLetters.includes(letter)) {
                     visibleLetter = letter;
                 } else {
-                    visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem" }}>{letter}</span>;
+                    visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem"}}>{letter}</span>;
                 }
-            } else if (/[àâäéèêëîïôöûüç]/i.test(letter)) {
-                visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem" }}>{letter}</span>;
             }
             return (
-                <span key={index} style={{ borderBottom: "2px solid black", marginRight: "10px", paddingBottom: "10px" }}>
+                <span key={index} style={{ borderBottom: "2px solid black", marginRight: "10px", paddingBottom: "10px", fontSize: "2rem", fontFamily: "FinkHeavy", fontWeight: 500 }}>
                     {visibleLetter}
                 </span>
             );
         });
     };
 
+    console.log("Mot actuel :", word);
+    console.log("Lettres correctes :", correctLetters);
+
     return (
         <div className="container">
             {/* <p>Mot renvoyé par l'API : {word}</p> */}
+            {/* c'était pour tester quel mot avait été renvoyé au début */}
 
             {word ? (
                 <div>

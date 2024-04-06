@@ -10,7 +10,7 @@ li {
 }
 
 li button {
-    background-color: rgba(205, 236, 128, 0.503);
+    background-color: rgba(229, 255, 162, 0.675);
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -32,6 +32,8 @@ ul {
 }
 
 button.active {
-    background-color: rgb(178, 0, 86);
+    background-color: rgb(131, 203, 121);
     color: white; 
+    font-weight: bold;
+    padding: 13px;
 }

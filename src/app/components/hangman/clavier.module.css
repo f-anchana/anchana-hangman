@@ -1,13 +1,14 @@
 .touche{
     margin-top: 1.5rem;
     width: 100%;
-    background-color: rgb(255, 212, 103);
+    background-color: #84c277;
     border: none;
     aspect-ratio: 1 / 1;
     font-size: 2rem;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
+
 }
 
 .touche:active{
@@ -22,4 +23,16 @@
 .touche:hover:not(:disabled), .touche:focus:not(:disabled){
     background-color: rgb(255, 103, 149);
     color: white;
+}
+
+.fenetre{
+    /* display: flex !important;
+    margin: auto; */
+    width: 50vw;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.fenetre button{
+    cursor: pointer;
 }

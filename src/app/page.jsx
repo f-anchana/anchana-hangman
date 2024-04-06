@@ -6,6 +6,7 @@ import { Mot } from "./components/mot/Mot";
 import { Footer } from "./components/footer/Footer";
 import { DessinHangman } from "./components/hangman/DessinHangman";
 import { Clavier } from "./components/hangman/Clavier";
+
 // import Modal from 'react-modal';
 
 

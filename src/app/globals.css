@@ -9,6 +9,10 @@
   --background-start-rgb: 255, 20, 140;
   --background-end-rgb: 50, 150, 200;
 
+  #root{
+    background-image: url("/animal.jpg");
+  }
+
   --primary-glow: conic-gradient(
     from 180deg at 50% 50%,
     #16abff33 0deg,

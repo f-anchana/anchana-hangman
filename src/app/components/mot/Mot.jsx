@@ -22,9 +22,11 @@ export const Mot = ({ locale, LabonneLettre }) => {
 
             const res = await fetch(API, requestOptions);
             const data = await res.json();
-            localStorage.setItem("word", data.word);
             setWord(data.word);
             console.log("Mot renvoyé par l'API :", data.word);
+            if (typeof window !== 'undefined') {
+                localStorage.setItem("word", data.word);
+            }
         } catch (error) {
             console.error('Erreur lors de la requête API :', error);
         }
@@ -70,7 +72,7 @@ export const Mot = ({ locale, LabonneLettre }) => {
     // Affichage du composant Mot
     return (
         <div className="container">
-            <p>Mot renvoyé par l'API : {word}</p>
+            {/* <p>Mot renvoyé par l'API : {word}</p> */}
             {/* c'était pour tester quel mot avait été renvoyé au début */}
 
             {word ? (

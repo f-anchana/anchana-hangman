@@ -83,22 +83,50 @@ const Clavier = ({ setMauvaisChoix, setbonneLettre }) => {
       <Modal
         isOpen={successModalIsOpen}
         onRequestClose={() => setSuccessModalIsOpen(false)}
-        contentLabel="Success Modal" ariaHideApp={false} className={"fenetre"} >
+        contentLabel="Success Modal" ariaHideApp={false}  style={{
+          content: {
+            width: '60vw',
+            height: '60vh',
+            gap: '1rem',
+            marginTop: '1.5rem',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        }} >
         <h2 style={{fontFamily: "FinkHeavy"}} >Félicitations ! Vous avez trouvé le mot !</h2>
         <p style={{fontFamily: "FinkHeavy"}}>Le mot était : {localStorage.getItem("word")}</p><br></br>
-        <img src="/henry_gagnant.gif" alt="" />
-        <button style={{fontFamily: "FinkHeavy", fontSize: "1.3rem"}} onClick={() => {setSuccessModalIsOpen(false); window.location.reload();}}>Fermer</button>
+        <img style={{height: "40vh"}} src="/henry_gagnant.gif" alt="" /> <br />
+        <button style={{fontFamily: "FinkHeavy", fontSize: "1.3rem", cursor: "pointer", textAlign: "center"}} onClick={() => {setSuccessModalIsOpen(false); window.location.reload();}}>Fermer</button>
       </Modal>
 
       <Modal
         isOpen={failureModalIsOpen}
         onRequestClose={() => setFailureModalIsOpen(false)}
-        contentLabel="Failure Modal" ariaHideApp={false} className={"fenetre"}>
-        <p>Le mot était : {localStorage.getItem("word")}</p>
+        contentLabel="Failure Modal" ariaHideApp={false} style={{
+          content: {
+            width: '60vw',
+            height: '60vh',
+            gap: '1rem',
+            marginTop: '1.5rem',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          },
+          overlay: {
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          },
+        }}>
+        <p style={{fontWeight: 700, fontFamily: "FinkHeavy", fontSize: "1.4rem"}} >Le mot était : {localStorage.getItem("word")}</p>
 
-        <h2>Vous avez perdu, veuillez retenter votre chance !</h2>
-        <img src="/henry-crying.gif" alt="" />
-        <button onClick={() => { setFailureModalIsOpen(false); window.location.reload(); }}>Fermer</button>
+        <h2 style={{fontFamily: "FinkHeavy"}} >Vous avez perdu, veuillez retenter votre chance !</h2>
+        <img style={{alignItems: "center"}} src="/henry-crying.gif" alt="" /><br></br>
+        <button style={{fontFamily: "FinkHeavy", fontSize: "1.3rem", cursor: "pointer", textAlign: "center"}} onClick={() => { setFailureModalIsOpen(false); window.location.reload(); }}>Fermer</button>
       </Modal>
     </div>
   );

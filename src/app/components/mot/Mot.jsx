@@ -3,12 +3,12 @@ import React, { useState, useEffect } from 'react';
 
 const API = "https://node-hangman-api-production.up.railway.app/";
 
-
-// ça c'est le composant Mot qui affiche les lettres du mot à deviner, on fait une requête à l'API pour récupérer un mot aléatoire en fonction de la langue choisie
+// Composant Mot qui affiche les lettres du mot à deviner
 export const Mot = ({ locale, LabonneLettre }) => {
     const [word, setWord] = useState(null);
     const [correctLetters, setCorrectLetters] = useState([]);
 
+    // Fonction pour récupérer un mot aléatoire en fonction de la langue choisie
     const fetchWord = async () => {
         try {
             const requestBody = new URLSearchParams();
@@ -30,22 +30,27 @@ export const Mot = ({ locale, LabonneLettre }) => {
         }
     };
 
+    // Appel de la fonction fetchWord lors du changement de la locale
     useEffect(() => {
         fetchWord();
     }, [locale]);
 
+    // Effet déclenché lorsque LabonneLettre change
     useEffect(() => {
+        // Si une lettre correcte est trouvée
         if (LabonneLettre) {
+            // Mise à jour des lettres correctes
             setCorrectLetters((prevCorrectLetters) => [...prevCorrectLetters, LabonneLettre]);
         }
     }, [LabonneLettre]);
 
 
-    // On affiche les lettres du mot à deviner, en cachant celles qui n'ont pas encore été trouvées, on essaie de gérer les lettres accentuées mais ça ne marche pas
+    // Fonction pour afficher les lettres du mot à deviner
     const renderLetters = () => {
         if (!word) return null;
         return word.split('').map((letter, index) => {
             let visibleLetter = letter;
+            // Gestion des lettres accentuées
             if (/[a-zA-Zàâäéèêëîïôöûüç]/i.test(letter)) {
                 if (correctLetters.includes(letter)) {
                     visibleLetter = letter;
@@ -53,6 +58,7 @@ export const Mot = ({ locale, LabonneLettre }) => {
                     visibleLetter = <span style={{ visibility: "hidden", fontSize: "2rem"}}>{letter}</span>;
                 }
             }
+            // Affichage de la lettre
             return (
                 <span key={index} style={{ borderBottom: "2px solid black", marginRight: "10px", paddingBottom: "10px", fontSize: "2rem", fontFamily: "FinkHeavy", fontWeight: 500 }}>
                     {visibleLetter}
@@ -61,12 +67,10 @@ export const Mot = ({ locale, LabonneLettre }) => {
         });
     };
 
-    console.log("Mot actuel :", word);
-    console.log("Lettres correctes :", correctLetters);
-
+    // Affichage du composant Mot
     return (
         <div className="container">
-            {/* <p>Mot renvoyé par l'API : {word}</p> */}
+            <p>Mot renvoyé par l'API : {word}</p>
             {/* c'était pour tester quel mot avait été renvoyé au début */}
 
             {word ? (

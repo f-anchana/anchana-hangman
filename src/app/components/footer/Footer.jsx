@@ -5,7 +5,7 @@ export default function Footer() {
     
         return (
             <footer>
-            <h1 style={{fontFamily: "FinkHeavy"}} >By Anchana👑✨🪐🍓</h1>
+            <a href="https://anchana.fatimarajan.fr/" target="_blank" style={{fontFamily: "FinkHeavy", fontSize:"1.7rem"}} >By Anchana👑✨🪐🍓</a>
             </footer>
         );
     

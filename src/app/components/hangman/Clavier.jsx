@@ -67,7 +67,7 @@ const Clavier = ({ setMauvaisChoix, setbonneLettre }) => {
   // Affichage des touches + modals de victoire et défaite
   return (
     <div>
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: ".5rem", paddingTop: "40px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: "10px", paddingTop: "40px", maxWidth: "900px", margin:"auto" }}>
         {touches.map((lettre) => (
           <button style={{fontFamily: "FinkHeavy"}}
             className={`${styles.touche}`}

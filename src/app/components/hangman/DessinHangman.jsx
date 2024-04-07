@@ -16,8 +16,8 @@ export function DessinHangman({ MauvaisChoix }) {
   const partsToShow = Math.min(MauvaisChoix, 7);
 
   return (
-    <div style={{ position: "relative" }}>
-      <img src="/base.png" alt="" />
+    <div style={{ position: "relative", widh:"500px", height:"400px" }}>
+      <img style={{width:"100%", height:"100%"}} src="/base.png" alt="" />
       {partsToShow >= 1 && <div style={{ position: "absolute", top: 0, left: 0 }}>{Corde}</div>}
       {partsToShow >= 2 && <div style={{ position: "absolute", top: 0, left: 0 }}>{Tete}</div>}
       {partsToShow >= 3 && <div style={{ position: "absolute", top: 0, left: 0 }}>{Corps}</div>}

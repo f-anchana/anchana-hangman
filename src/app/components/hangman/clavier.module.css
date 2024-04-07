@@ -1,10 +1,10 @@
 .touche{
     margin-top: 1.5rem;
-    width: 100%;
+    width: 60%;
     background-color: #84c277;
     border: none;
     aspect-ratio: 1 / 1;
-    font-size: 2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: bold;
